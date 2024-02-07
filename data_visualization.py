@@ -1,2 +1,2 @@
-from SAD import *
+from main import *
 import matplotlib as plt
