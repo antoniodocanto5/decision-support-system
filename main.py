@@ -31,18 +31,22 @@ print("Número de linhas após a limpeza:", len(netflix_limpo))
 netflix_limpo.hist()
 plt.show()
 
-# Visualizar a correlação entre as características usando um mapa de calor
-# plt.figure(figsize=(8, 6))
-# sns.heatmap(netflix_limpo.corr(), annot=True, cmap="coolwarm")
-# plt.show()
+# Verificar colunas com valores não numéricos
+for col in netflix_limpo.columns:
+    if netflix_limpo[col].dtype == 'object':
+        try:
+            pd.to_numeric(netflix_limpo[col])
+        except ValueError:
+            print(f"A coluna {col} contém valores não numéricos.")
 
+# Remover a coluna "Date" do DataFrame
+netflix_limpo_sem_data = netflix_limpo.drop(columns=['Date'])
 
+# Calcular e visualizar a correlação entre as características restantes
+plt.figure(figsize=(8, 6))
+sns.heatmap(netflix_limpo_sem_data.corr(), annot=True, cmap="coolwarm")
+plt.show()
 
-# netflix_numerico = netflix_limpo[['comprimento_da_sépala', 'largura_da_sépala', 'comprimento_do_pétalo', 'largura_do_pétalo']]
-# kmeans = KMeans(n_clusters=3, random_state=42).fit(netflix_numerico)
-
-# Adicionar rótulos de cluster ao conjunto de dados
-netflix_limpo['cluster'] = KMeans.labels_
 
 # Exibir as primeiras 5 linhas do conjunto de dados com rótulos de cluster
 print("\nPrimeiras 5 linhas do conjunto de dados com rótulos de cluster:")
