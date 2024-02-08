@@ -25,6 +25,6 @@ plt.grid(True)
 plt.show()
 
 # Perform seasonal decomposition
-result = seasonal_decompose(data['close'], model='additive', period=30)  # Assuming seasonality period of 30 days
+result = seasonal_decompose(data['Close'], model='additive', period=30)  # Assuming seasonality period of 30 days
 result.plot()
 plt.show()
