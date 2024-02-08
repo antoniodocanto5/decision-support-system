@@ -8,6 +8,8 @@ matplotlib = "*"
 seaborn = "*"
 pandas = "*"
 scikit-learn = "*"
+statsmodels = "*"
+pyarrow = "*"
 
 [dev-packages]
 
