@@ -1,3 +1,4 @@
+from telnetlib import SB
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -10,7 +11,8 @@ netflix = pd.read_csv('netflix_data.csv')
 
 # Exibir as primeiras 5 linhas do conjunto de dados
 print("Primeiras 5 linhas do conjunto de dados:")
-print(netflix.head())
+print(netflix.head(5))
+
 
 # Exibir estatísticas resumidas
 print("\nEstatísticas resumidas:")
@@ -47,7 +49,16 @@ plt.figure(figsize=(8, 6))
 sns.heatmap(netflix_limpo_sem_data.corr(), annot=True, cmap="coolwarm")
 plt.show()
 
+# # Selecionar apenas as colunas numéricas para o agrupamento
+# netflix_numerico = netflix_limpo_sem_data[['Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume']]
 
-# Exibir as primeiras 5 linhas do conjunto de dados com rótulos de cluster
-print("\nPrimeiras 5 linhas do conjunto de dados com rótulos de cluster:")
-print(netflix_limpo.head())
+# # Aplicar o algoritmo KMeans para realizar o agrupamento
+# kmeans = KMeans(n_clusters=3, random_state=42)
+# kmeans.fit(netflix_numerico)
+
+# # Adicionar rótulos de cluster ao DataFrame
+# netflix_limpo_sem_data['Cluster'] = kmeans.labels_
+
+# # Exibir as primeiras 5 linhas do conjunto de dados com rótulos de cluster
+# print("\nPrimeiras 5 linhas do conjunto de dados com rótulos de cluster:")
+# print(netflix_limpo.head())
