@@ -6,11 +6,11 @@ from sklearn.metrics import mean_squared_error, r2_score
 import matplotlib.pyplot as plt
 
 # Carregar o conjunto de dados (substitua 'data.csv' pelo nome do seu arquivo CSV)
-data = pd.read_csv('data.csv')
+data = pd.read_csv('netflix_data.csv')
 
 # Separar as variáveis independentes (X) e dependentes (y)
-X = data[['feature1', 'feature2', 'feature3']]  # Substitua 'feature1', 'feature2', 'feature3' pelos nomes das suas características
-y = data['target']  # Substitua 'target' pelo nome da sua variável alvo
+X = data[['Open', 'High', 'Low', 'Close', 'Adj Close', 'Volume']]  # Substitua 'feature1', 'feature2', 'feature3' pelos nomes das suas características
+y = data['Open']  # Substitua 'target' pelo nome da sua variável alvo
 
 # Dividir os dados em conjuntos de treinamento e teste
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
