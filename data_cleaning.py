@@ -13,11 +13,8 @@ def loading_animation(text):
         time.sleep(0.2)  
     print("\n")
 
-    
-
-
-
 data = pd.read_csv('netflix_data.csv')
+
 
 #Verificar Valores Faltando
 loading_animation("Verificando Valores Faltando")
